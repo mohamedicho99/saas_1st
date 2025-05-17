@@ -1,5 +1,7 @@
 import ButtonLogin from "./components/ButtonLogin";
 import FAQListItem from "./components/FAQListItem";
+import Image from "next/image";
+import productDemo from "./productDemo.jpeg";
 
 export default function Home() {
   let isloggedin = true;
@@ -14,11 +16,15 @@ export default function Home() {
     <main>
       {/* header */}
       <section className="bg-base-300">
-        <div className="max-w-3xl m-auto flex justify-between items-center px-8 py-2">
+        <div className="max-w-5xl m-auto flex justify-between items-center px-8 py-2">
           <div className="font-bold">IchoSolutions</div>
           <div className="space-x-4 max-md:hidden">
-            <a className="link link-hover" href="#pricing">Pricing</a>
-            <a className="link link-hover" href="#faq">FAQ</a>
+            <a className="link link-hover" href="#pricing">
+              Pricing
+            </a>
+            <a className="link link-hover" href="#faq">
+              FAQ
+            </a>
           </div>
           <div>
             <ButtonLogin isloggedin={isloggedin} name={name} />
@@ -28,15 +34,19 @@ export default function Home() {
 
       {/* hero */}
 
-      <section className="text-center py-32 px-8 max-w-3xl m-auto">
-        <h1 className="text-4xl font-extrabold mb-6">
-          Collect customer feedback to build better products!
-        </h1>
-        <div className="opacity-90 mb-10">
-          Create a feedback board in minutes, prioritize features and build
-          products your customers will love.
+      <section className="text-center lg:text-left items-center lg:items-start py-32 px-8 max-w-5xl m-auto flex flex-col lg:flex-row gap-14">
+        <Image src={productDemo} alt="product demo" className="w-96 rounded-xl"/>
+
+        <div>
+          <h1 className="text-4xl font-extrabold mb-6">
+            Collect customer feedback to build better products!
+          </h1>
+          <div className="opacity-90 mb-10">
+            Create a feedback board in minutes, prioritize features and build
+            products your customers will love.
+          </div>
+          <ButtonLogin isloggedin={isloggedin} name={name} />
         </div>
-        <ButtonLogin isloggedin={isloggedin} name={name} />
       </section>
 
       {/* pricing */}
@@ -96,24 +106,23 @@ export default function Home() {
             Frequently Asked Questions
           </h2>
           <ul className="max-w-lg mx-auto">
-          {
-            [
+            {[
               {
-                question: "Are you there icho?", 
-                answer: "You better believe it"
+                question: "Are you there icho?",
+                answer: "You better believe it",
               },
               {
-                question: "How do i get a refund?", 
-                answer: "No money back! this is drarga people buddy!"
+                question: "How do i get a refund?",
+                answer: "No money back! this is drarga people buddy!",
               },
               {
-                question: "What do i get exactly?", 
-                answer: "You get your ass handed to you in here! this is Drarga buddy!"
+                question: "What do i get exactly?",
+                answer:
+                  "You get your ass handed to you in here! this is Drarga buddy!",
               },
             ].map((qa) => (
-              <FAQListItem key={qa.question} qa={qa}/>
-            ))
-          }
+              <FAQListItem key={qa.question} qa={qa} />
+            ))}
           </ul>
         </div>
       </section>

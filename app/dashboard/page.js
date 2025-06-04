@@ -1,10 +1,10 @@
-import Link from "next/link";
+import ButtonLogout from "../components/ButtonLogout";
 
 export default function Home() {
   return (
     <main>
-        <h1>here we go...</h1>
-        <Link href="/">Logout</Link>
+        <h1>private dashboard</h1>
+        <ButtonLogout />
     </main>
   );
 }

@@ -2,10 +2,11 @@ import ButtonLogin from "./components/ButtonLogin";
 import FAQListItem from "./components/FAQListItem";
 import Image from "next/image";
 import productDemo from "./productDemo.jpeg";
+import { auth } from "@/auth";
 
-export default function Home() {
-  let isloggedin = true;
-  let name = "Icho";
+export default async function Home() {
+  const session = await auth();
+
   const pricingList = [
     "Cellect Customer Feedback",
     "Unlimited Boards",
@@ -27,7 +28,7 @@ export default function Home() {
             </a>
           </div>
           <div>
-            <ButtonLogin isloggedin={isloggedin} name={name} />
+            <ButtonLogin session={session} />
           </div>
         </div>
       </section>
@@ -35,7 +36,11 @@ export default function Home() {
       {/* hero */}
 
       <section className="text-center lg:text-left items-center lg:items-start py-32 px-8 max-w-5xl m-auto flex flex-col lg:flex-row gap-14">
-        <Image src={productDemo} alt="product demo" className="w-96 rounded-xl"/>
+        <Image
+          src={productDemo}
+          alt="product demo"
+          className="w-96 rounded-xl"
+        />
 
         <div>
           <h1 className="text-4xl font-extrabold mb-6">
@@ -45,7 +50,7 @@ export default function Home() {
             Create a feedback board in minutes, prioritize features and build
             products your customers will love.
           </div>
-          <ButtonLogin isloggedin={isloggedin} name={name} />
+          <ButtonLogin session={session} />
         </div>
       </section>
 
@@ -87,11 +92,7 @@ export default function Home() {
               ))}
             </ul>
 
-            <ButtonLogin
-              isloggedin={isloggedin}
-              name={name}
-              extraStyle="w-full"
-            />
+            <ButtonLogin session={session} extraStyle="w-full" />
           </div>
         </div>
       </section>
